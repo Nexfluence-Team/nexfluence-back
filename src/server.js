@@ -18,7 +18,9 @@ connectDB();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || '*' // tighten this in production
+  origin: ["https://nexfluence.vercel.app", "http://localhost:3000"],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true
 }));
 app.use(express.json({ limit: '10kb' })); // parse JSON
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
