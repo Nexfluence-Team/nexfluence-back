@@ -18,7 +18,7 @@ connectDB();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: ["https://nexfluence.eu","https://nexfluence.vercel.app", "http://localhost:3000"],
+  origin: ["https://www.nexfluence.eu","https://nexfluence.vercel.app", "http://localhost:3000"],
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true
 }));
