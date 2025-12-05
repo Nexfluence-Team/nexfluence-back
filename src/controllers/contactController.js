@@ -34,6 +34,25 @@ exports.getContacts = async (req, res, next) => {
 };
 
 /**
+ * GET /api/contact/:id
+ * Return a single contact by ID
+ */
+exports.getContactById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const contact = await Contact.findById(id);
+    if (!contact) {
+      return res.status(404).json({ ok: false, message: 'Contact not found' });
+    }
+
+    res.json({ ok: true, data: contact });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
  * PATCH /api/contact/:id
  * Update status (seen/archived)
  */
