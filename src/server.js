@@ -8,6 +8,12 @@ const connectDB = require('./config/db');
 const contactRoutes = require('./routes/contactRoutes');
 const adminRoutes = require('./routes/adminRoutes');   // <-- ADD THIS
 const { errorHandler, notFound } = require('./middleware/errorHandler');
+const feedbackRoutes = require("./routes/feedbackRoutes");
+const campaignPlannerRoutes = require("./routes/campaignPlannerRoutes");
+const agencySignupRoutes = require("./routes/agencySignupRoutes");
+const creatorRoutes = require("./routes/creatorRoutes.js");
+const brandRoutes = require("./routes/brandRoutes");
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +36,12 @@ app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.get('/', (req, res) => res.send('Nexfluence backend is running.'));
 app.use('/api/contact', contactRoutes);
 app.use('/api/admin', adminRoutes); // <-- ADD THIS
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api/campaign-planner", campaignPlannerRoutes);
+app.use("/api/agency-signup", agencySignupRoutes);
+app.use("/api/creators", creatorRoutes);
+app.use("/api/brands", brandRoutes);
+
 
 // Error handling
 app.use(notFound);
